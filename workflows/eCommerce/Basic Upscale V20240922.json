@@ -1,0 +1,185 @@
+{
+  "last_node_id": 75,
+  "last_link_id": 124,
+  "nodes": [
+    {
+      "id": 47,
+      "type": "UpscaleModelLoader",
+      "pos": {
+        "0": 542,
+        "1": 93
+      },
+      "size": [
+        424.5824492528038,
+        71.02509234690672
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            122
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x-UltraSharp.pth"
+      ]
+    },
+    {
+      "id": 75,
+      "type": "ImageUpscaleWithModel",
+      "pos": {
+        "0": 1040,
+        "1": 106
+      },
+      "size": {
+        "0": 340.20001220703125,
+        "1": 46
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 122
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 124
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            123
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel"
+      }
+    },
+    {
+      "id": 48,
+      "type": "LoadImage",
+      "pos": {
+        "0": 536,
+        "1": 241
+      },
+      "size": [
+        444.34953959082054,
+        592.7255280465174
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            124
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_mpuqc_00033_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 49,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 1071,
+        "1": 245
+      },
+      "size": [
+        635.5431395908204,
+        661.9305280465173
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 123
+        }
+      ],
+      "outputs": [],
+      "title": "Preview Upscaled Image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      122,
+      47,
+      0,
+      75,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      123,
+      75,
+      0,
+      49,
+      0,
+      "IMAGE"
+    ],
+    [
+      124,
+      48,
+      0,
+      75,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650709,
+      "offset": [
+        341.73276040917943,
+        328.7698719534823
+      ]
+    }
+  },
+  "version": 0.4
+}
